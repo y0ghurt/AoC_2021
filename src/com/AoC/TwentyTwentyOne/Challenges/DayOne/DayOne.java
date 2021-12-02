@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 public class DayOne {
     public static void dayOne() {
+
+        System.out.println();
+
         // Day 1: First assignment
         DepthMeasurements depthMeasurements = new DepthMeasurements();
             try {
@@ -16,11 +19,14 @@ public class DayOne {
             while (scanner.hasNextInt()) {
                 depthMeasurements.addMeasurement(scanner.nextInt());
             }
-            System.out.println("The number of depth increases is: " + depthMeasurements.getTimesLarger());
+            System.out.println("-= Day 1: First challenge =-");
             System.out.println("Total number of rows: " + depthMeasurements.getNumberOfMeasurements());
+            System.out.println("The number of depth increases (and thus the answer to the first challenge) is: " + depthMeasurements.getTimesLarger());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
+
+        System.out.println();
 
         // Day 1: Second assignment
         SlidingWindow slidingWindow = new SlidingWindow(3);
@@ -32,12 +38,15 @@ public class DayOne {
                 slidingWindow.addNumber(scanner.nextInt());
                 try {
                     depthMeasurements.addMeasurement(slidingWindow.getWindow());
+                } catch(UnsupportedOperationException uoe) {
+                    // Do nothing.
                 } catch(Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
-            System.out.println("The number of sliding window depth increases is: " + depthMeasurements.getTimesLarger());
+            System.out.println("-= Day 2: Second challenge =-");
             System.out.println("Total number of sliding windows: " + depthMeasurements.getNumberOfMeasurements());
+            System.out.println("The number of sliding window depth increases (answer) is: " + depthMeasurements.getTimesLarger());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }

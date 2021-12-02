@@ -9,6 +9,9 @@ import java.util.Scanner;
 
 public class DayTwo {
     public static void dayTwo() {
+
+        System.out.println();
+
         // Day 2: First assignment
         Coordinate coordinate = new Coordinate();
         try {
@@ -19,6 +22,7 @@ public class DayTwo {
                 array = scanner.nextLine().split("\s");
                 coordinate.travel(Direction.valueOf(array[0]), Integer.parseInt(array[1]));
             }
+            System.out.println("-= Day 2: First challenge =-");
             System.out.println("The current depth is: " + coordinate.getDepth());
             System.out.println("The current distance travelled is: " + coordinate.getDistance());
             System.out.println("The answer to the first task (depth * distance) is: " + (coordinate.getDepth() * coordinate.getDistance()));
@@ -26,8 +30,6 @@ public class DayTwo {
             System.out.println(e.getMessage());
         }
 
-        System.out.println();
-        System.out.println();
         System.out.println();
 
         // Day 2: Second assignment
@@ -40,6 +42,7 @@ public class DayTwo {
                 array = scanner.nextLine().split("\s");
                 advancedCoordinate.travel(Direction.valueOf(array[0]), Integer.parseInt(array[1]));
             }
+            System.out.println("-= Day 2: Second challenge =-");
             System.out.println("The current aim is: " + advancedCoordinate.getAim());
             System.out.println("The current depth is: " + advancedCoordinate.getDepth());
             System.out.println("The current distance travelled is: " + advancedCoordinate.getDistance());

@@ -26,7 +26,7 @@ public class SlidingWindow {
                 window += value;
             }
         } else {
-            throw (new Exception("Not enough values in buffer"));
+            throw (new UnsupportedOperationException("Not enough values in buffer"));
         }
 
         return window;
