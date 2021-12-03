@@ -9,8 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //DayOne.dayOne();
-        //DayTwo.dayTwo();
+        DayOne.dayOne();
+        DayTwo.dayTwo();
         DayThree.dayThree();
     }
 }
