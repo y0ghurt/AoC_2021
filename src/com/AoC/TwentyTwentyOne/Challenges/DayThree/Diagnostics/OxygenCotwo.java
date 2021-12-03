@@ -29,6 +29,23 @@ public class OxygenCotwo {
         }
     }
 
+    public int mostUncommonNumberOnIndex(List<String> data, int index) {
+        int ones = 0;
+        int zeroes = 0;
+        for (String s : data) {
+            if (s.charAt(index) == '1') {
+                ones++;
+            } else {
+                zeroes++;
+            }
+        }
+        if(ones < zeroes) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public List<String> filterValues(List<String> data, int filterValue, int index) {
         List<String> filteredData = new LinkedList();
         for(String s : data) {
@@ -48,6 +65,9 @@ public class OxygenCotwo {
             commonValue = mostCommonNumberOnIndex(commonList, counter);
             commonList = filterValues(commonList, commonValue, counter);
             counter++;
+            if(commonList.size() == 1) {
+                return Integer.parseInt(commonList.get(0), 2);
+            }
         }
 
         return Integer.parseInt(commonList.get(0), 2);
@@ -59,13 +79,11 @@ public class OxygenCotwo {
         int counter = 0;
         int uncommonValue;
         while(counter < dataLength) {
-            uncommonValue = mostCommonNumberOnIndex(uncommonList, counter);
-            if(uncommonValue == 0) {
-                uncommonValue = 1;
-            } else {
-                uncommonValue = 0;
-            }
+            uncommonValue = mostUncommonNumberOnIndex(uncommonList, counter);
             uncommonList = filterValues(uncommonList, uncommonValue, counter);
+            if(uncommonList.size() == 1) {
+                return Integer.parseInt(uncommonList.get(0), 2);
+            }
             counter++;
         }
 

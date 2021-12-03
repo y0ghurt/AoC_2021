@@ -50,7 +50,7 @@ public class DayThree {
             System.out.println("-= Day 3: Second challenge =-");
             System.out.println("O2 value:  " + oxygenCotwo.findCommon());
             System.out.println("CO2 value: " + oxygenCotwo.findUncommon());
-            System.out.println("Life support rating: " + (oxygenCotwo.findCommon() * oxygenCotwo.findCommon()));
+            System.out.println("Life support rating: " + (oxygenCotwo.findCommon() * oxygenCotwo.findUncommon()));
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
