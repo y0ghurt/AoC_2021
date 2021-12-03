@@ -2,6 +2,7 @@ package com.AoC.TwentyTwentyOne;
 
 
 import com.AoC.TwentyTwentyOne.Challenges.DayOne.DayOne;
+import com.AoC.TwentyTwentyOne.Challenges.DayThree.DayThree;
 import com.AoC.TwentyTwentyOne.Challenges.DayTwo.DayTwo;
 
 public class Main {
@@ -10,6 +11,6 @@ public class Main {
 
         DayOne.dayOne();
         DayTwo.dayTwo();
-
+        DayThree.dayThree();
     }
 }
