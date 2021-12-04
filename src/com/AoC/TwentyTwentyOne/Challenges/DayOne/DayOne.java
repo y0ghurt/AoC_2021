@@ -44,7 +44,7 @@ public class DayOne {
                     System.out.println(e.getMessage());
                 }
             }
-            System.out.println("-= Day 2: Second challenge =-");
+            System.out.println("-= Day 1: Second challenge =-");
             System.out.println("Total number of sliding windows: " + depthMeasurements.getNumberOfMeasurements());
             System.out.println("The number of sliding window depth increases (answer) is: " + depthMeasurements.getTimesLarger());
         } catch(Exception e) {
