@@ -26,7 +26,7 @@ public class DaySeven {
 
             crabFuelConsumption = new CrabFuelConsumption(crabList);
 
-            System.out.println("-= Day 7: Second challenge =-");
+            System.out.println("-= Day 7: First challenge =-");
             System.out.println("The lowest possible amount of fuel needed to align crabs is: " + crabFuelConsumption.findLowestFuelConsumption());
         } catch(Exception e) {
             System.out.println(e.getMessage());
