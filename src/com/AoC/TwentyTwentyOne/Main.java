@@ -4,6 +4,7 @@ package com.AoC.TwentyTwentyOne;
 import com.AoC.TwentyTwentyOne.Challenges.DayEight.DayEight;
 import com.AoC.TwentyTwentyOne.Challenges.DayFive.DayFive;
 import com.AoC.TwentyTwentyOne.Challenges.DayFour.DayFour;
+import com.AoC.TwentyTwentyOne.Challenges.DayNine.DayNine;
 import com.AoC.TwentyTwentyOne.Challenges.DayOne.DayOne;
 import com.AoC.TwentyTwentyOne.Challenges.DaySeven.DaySeven;
 import com.AoC.TwentyTwentyOne.Challenges.DaySix.DaySix;
@@ -22,5 +23,6 @@ public class Main {
         DaySix.daySix();
         DaySeven.daySeven();
         DayEight.dayEight();
+        DayNine.dayNine();
     }
 }
