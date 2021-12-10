@@ -49,6 +49,7 @@ public class DayNine {
             List<Integer> basins = lowPointFinder.findBasins();
 
             Collections.sort(basins);
+            Collections.reverse(basins);
 
             System.out.println("-= Day 9: Second challenge =-");
             System.out.println("The answer is: " + (basins.get(0) * basins.get(1) * basins.get(2)));

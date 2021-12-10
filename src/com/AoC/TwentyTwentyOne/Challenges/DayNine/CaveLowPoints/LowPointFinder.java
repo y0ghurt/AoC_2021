@@ -1,6 +1,8 @@
 package com.AoC.TwentyTwentyOne.Challenges.DayNine.CaveLowPoints;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class LowPointFinder {
@@ -58,6 +60,7 @@ public class LowPointFinder {
 
         for(int[] coordinate: lowPointCoordinates) {
             currentBasinSize = 0;
+            foundBasinCoordinates = new LinkedList<>();
 
             evaluateCoordinate(coordinate[0], coordinate[1]);
             basins.add(currentBasinSize);
@@ -68,12 +71,19 @@ public class LowPointFinder {
     }
 
     private void evaluateCoordinate(int row, int column) {
-        boolean isItTrue = false;
-        foundBasinCoordinates = new ArrayList<>();
         int[] fu = new int[2];
         fu[0] = row;
         fu[1] = column;
-        if (!foundBasinCoordinates.contains(fu)) {
+        boolean carryOn = true;
+        if(foundBasinCoordinates.size() > 0) {
+            for (int[] coordinate : foundBasinCoordinates) {
+                if (coordinate[0] == row && coordinate[1] == column) {
+                    carryOn = false;
+                }
+            }
+        }
+
+        if (carryOn) {
             if (heightMap.get(row).get(column) != 9) {
                 foundBasinCoordinates.add(fu);
                 currentBasinSize++;
@@ -106,7 +116,7 @@ public class LowPointFinder {
                         }
                     }
                 }
-/*
+
                 if (column > 0) {
                     boolean add = true;
                     for(int[] coordinate : foundBasinCoordinates) {
@@ -122,8 +132,8 @@ public class LowPointFinder {
                 }
                 if (column < heightMap.get(row).size() - 1) {
                     boolean add = true;
-                    for(int[] coordinate : foundBasinCoordinates) {
-                        if(coordinate[0] == row && coordinate[1] == column + 1) {
+                    for (int[] coordinate : foundBasinCoordinates) {
+                        if (coordinate[0] == row && coordinate[1] == column + 1) {
                             add = false;
                         }
                     }
@@ -133,7 +143,6 @@ public class LowPointFinder {
                         }
                     }
                 }
-            */
             }
         }
     }
