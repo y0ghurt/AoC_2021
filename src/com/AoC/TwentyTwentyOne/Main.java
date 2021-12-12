@@ -2,6 +2,7 @@ package com.AoC.TwentyTwentyOne;
 
 
 import com.AoC.TwentyTwentyOne.Challenges.DayEight.DayEight;
+import com.AoC.TwentyTwentyOne.Challenges.DayEleven.DayEleven;
 import com.AoC.TwentyTwentyOne.Challenges.DayFive.DayFive;
 import com.AoC.TwentyTwentyOne.Challenges.DayFour.DayFour;
 import com.AoC.TwentyTwentyOne.Challenges.DayNine.DayNine;
@@ -26,5 +27,6 @@ public class Main {
         DayEight.dayEight();
         DayNine.dayNine();
         DayTen.dayTen();
+        DayEleven.dayEleven();
     }
 }
