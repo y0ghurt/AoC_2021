@@ -10,6 +10,7 @@ import com.AoC.TwentyTwentyOne.Challenges.DayOne.DayOne;
 import com.AoC.TwentyTwentyOne.Challenges.DaySeven.DaySeven;
 import com.AoC.TwentyTwentyOne.Challenges.DaySix.DaySix;
 import com.AoC.TwentyTwentyOne.Challenges.DayTen.DayTen;
+import com.AoC.TwentyTwentyOne.Challenges.DayThirteen.DayThirteen;
 import com.AoC.TwentyTwentyOne.Challenges.DayThree.DayThree;
 import com.AoC.TwentyTwentyOne.Challenges.DayTwelve.DayTwelve;
 import com.AoC.TwentyTwentyOne.Challenges.DayTwo.DayTwo;
@@ -32,5 +33,6 @@ public class Main {
         /*  Activate this at your own risk - it takes several minutes to complete on a pretty decent computer.
         DayTwelve.dayTwelve();
         */
+        DayThirteen.dayThirteen();
     }
 }
