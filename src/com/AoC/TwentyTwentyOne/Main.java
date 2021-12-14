@@ -5,6 +5,7 @@ import com.AoC.TwentyTwentyOne.Challenges.DayEight.DayEight;
 import com.AoC.TwentyTwentyOne.Challenges.DayEleven.DayEleven;
 import com.AoC.TwentyTwentyOne.Challenges.DayFive.DayFive;
 import com.AoC.TwentyTwentyOne.Challenges.DayFour.DayFour;
+import com.AoC.TwentyTwentyOne.Challenges.DayFourteen.DayFourteen;
 import com.AoC.TwentyTwentyOne.Challenges.DayNine.DayNine;
 import com.AoC.TwentyTwentyOne.Challenges.DayOne.DayOne;
 import com.AoC.TwentyTwentyOne.Challenges.DaySeven.DaySeven;
@@ -34,5 +35,6 @@ public class Main {
         DayTwelve.dayTwelve();
         */
         DayThirteen.dayThirteen();
+        DayFourteen.dayFourteen();
     }
 }

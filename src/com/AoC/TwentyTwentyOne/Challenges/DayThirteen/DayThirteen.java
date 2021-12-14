@@ -1,7 +1,5 @@
 package com.AoC.TwentyTwentyOne.Challenges.DayThirteen;
 
-import com.AoC.TwentyTwentyOne.Challenges.DayEleven.DumboOctopus.Coordinate;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
