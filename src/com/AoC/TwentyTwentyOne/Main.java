@@ -11,6 +11,7 @@ import com.AoC.TwentyTwentyOne.Challenges.DayNine.DayNine;
 import com.AoC.TwentyTwentyOne.Challenges.DayOne.DayOne;
 import com.AoC.TwentyTwentyOne.Challenges.DaySeven.DaySeven;
 import com.AoC.TwentyTwentyOne.Challenges.DaySix.DaySix;
+import com.AoC.TwentyTwentyOne.Challenges.DaySixteen.DaySixteen;
 import com.AoC.TwentyTwentyOne.Challenges.DayTen.DayTen;
 import com.AoC.TwentyTwentyOne.Challenges.DayThirteen.DayThirteen;
 import com.AoC.TwentyTwentyOne.Challenges.DayThree.DayThree;
@@ -38,5 +39,6 @@ public class Main {
         DayThirteen.dayThirteen();
         DayFourteen.dayFourteen();
         DayFifteen.dayFifteen();
+        DaySixteen.daySixteen();
     }
 }
