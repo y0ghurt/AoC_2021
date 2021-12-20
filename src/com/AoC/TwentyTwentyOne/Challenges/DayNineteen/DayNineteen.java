@@ -10,7 +10,7 @@ import java.util.*;
 public class DayNineteen {
     public static void dayNineteen() {
 
-        File file = new File("resources/d19_input.txt");
+        File file = new File("resources/d19_test_input.txt");
         Scanner scanner;
         List<BeaconScanner> beaconScanners = new ArrayList<>();
         int scannerCounter = -1;
@@ -68,11 +68,15 @@ public class DayNineteen {
                     }
                 } else {
                     allScannersMatched = false;
-                    CompareScanners.compare(masterMap, beaconScanner);
+                    CompareScanners compareScanners = new CompareScanners();
+                    compareScanners.compare(masterMap, beaconScanner);
                 }
             }
             System.out.println("Rotations: " + rotations);
             rotations++;
+
+            if(rotations > 20)
+                break;
         }
 
         System.out.println("Number of beacons: " + masterMap.size());

@@ -22,10 +22,6 @@ public class BeaconScanner {
                 this.beacons.add(new Beacon(Integer.parseInt(beacon[0]), Integer.parseInt(beacon[1]), Integer.parseInt(beacon[2]), "" + name + "-Beacon_" + runningNumber));
                 runningNumber++;
             }
-
-            for(int i = 0; i < 24; i++) {
-
-            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
