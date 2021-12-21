@@ -19,6 +19,8 @@ import com.AoC.TwentyTwentyOne.Challenges.DayTen.DayTen;
 import com.AoC.TwentyTwentyOne.Challenges.DayThirteen.DayThirteen;
 import com.AoC.TwentyTwentyOne.Challenges.DayThree.DayThree;
 import com.AoC.TwentyTwentyOne.Challenges.DayTwelve.DayTwelve;
+import com.AoC.TwentyTwentyOne.Challenges.DayTwenty.DayTwenty;
+import com.AoC.TwentyTwentyOne.Challenges.DayTwentyOne.DayTwentyOne;
 import com.AoC.TwentyTwentyOne.Challenges.DayTwo.DayTwo;
 
 public class Main {
@@ -45,6 +47,10 @@ public class Main {
         DaySixteen.daySixteen();
         DaySeventeen.daySeventeen();
         DayEighteen.dayEighteen();
+        /* Takes less time to run than DayTwelve, but still quite a bit longer than I would like. Will remain disabled for now.
         DayNineteen.dayNineteen();
+        */
+        DayTwenty.dayTwenty();
+        DayTwentyOne.dayTwentyOne();
     }
 }

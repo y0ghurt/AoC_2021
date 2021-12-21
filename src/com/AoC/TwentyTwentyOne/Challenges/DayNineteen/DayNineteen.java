@@ -10,7 +10,7 @@ import java.util.*;
 public class DayNineteen {
     public static void dayNineteen() {
 
-        File file = new File("resources/d19_test_input.txt");
+        File file = new File("resources/d19_input.txt");
         Scanner scanner;
         List<BeaconScanner> beaconScanners = new ArrayList<>();
         int scannerCounter = -1;
@@ -46,7 +46,6 @@ public class DayNineteen {
 
         System.out.println("Found " + beaconScanners.size() + " scanners.");
 
-        long rotations = 0;
         beaconScanners.get(0).matched = true;
         beaconScanners.get(0).matchedFacing = 0;
         boolean allScannersMatched = false;
@@ -68,20 +67,25 @@ public class DayNineteen {
                     }
                 } else {
                     allScannersMatched = false;
-                    CompareScanners compareScanners = new CompareScanners();
-                    compareScanners.compare(masterMap, beaconScanner);
+                    CompareScanners.compare(masterMap, beaconScanner);
                 }
             }
-            System.out.println("Rotations: " + rotations);
-            rotations++;
-
-            if(rotations > 20)
-                break;
         }
-
+        System.out.println();
+        System.out.println("-= Day 19: First challenge =-");
         System.out.println("Number of beacons: " + masterMap.size());
-        for(String position: masterMap.values()) {
-            System.out.println(position);
+        System.out.println();
+
+        int maximumManhattanDistance = 0;
+        for(BeaconScanner bs: beaconScanners) {
+            for(BeaconScanner bs2: beaconScanners) {
+                int manhattanDistance = CompareScanners.getManhattanDistance(bs, bs2);
+                maximumManhattanDistance = Math.max(maximumManhattanDistance, manhattanDistance);
+            }
         }
+
+        System.out.println();
+        System.out.println("-= Day 19: Second challenge =-");
+        System.out.println("Maximum Manhattan Distance between two scanners is: " + maximumManhattanDistance);
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CompareScanners {
-    public boolean compare( Map<Integer, String> masterMap, BeaconScanner beaconScanner) {
+    public static boolean compare( Map<Integer, String> masterMap, BeaconScanner beaconScanner) {
         List<String> matchedPositions = new ArrayList<>();
         Integer x1Offset = 0;
         Integer x2Offset = 0;
@@ -24,22 +24,13 @@ public class CompareScanners {
                     for (Beacon offsetBeacon : offsetBeacons) {
                         String offsetBeaconPosition = offsetBeacon.getPosition();
 
-                        // DEBUG CODE BELOW!!!
-                        if(offsetBeaconPosition.equals("432,-2009,850") && beaconScanner.name.equals("Scanner_4")) {
-                            for(Beacon b: offsetBeacons) {
-                                if(b.getPosition().equals("-739,-1745,668")) {
-                                    int ö = 0;
-                                }
-                            }
-                        }
-                        // DEBUG CODE ABOVE!!!
-
                         if (masterMap.containsValue(offsetBeacon.getPosition())) {
                             matchedPositions.add(offsetBeaconPosition);
                             matches++;
                         }
                         if (matches >= 12) {
-                            System.out.println("WE HAVE A MATCH (or twelve)!!! (" + beaconScanner.name + ")");
+                            // Debug
+                            // System.out.println("WE HAVE A MATCH (or twelve)!!! (" + beaconScanner.name + ")");
                             beaconScanner.matchedFacing = facing;
                             beaconScanner.matched = true;
                             beaconScanner.matchedOffset = "" + x1Offset + "," + x2Offset + "," + x3Offset;
@@ -50,5 +41,29 @@ public class CompareScanners {
             }
         }
         return false;
+    }
+
+    public static int getManhattanDistance(BeaconScanner b1, BeaconScanner b2) {
+        String[] b1Offset = b1.matchedOffset.split(",");
+        String[] b2Offset = b2.matchedOffset.split(",");
+        int x1 = Integer.parseInt(b1Offset[0]);
+        int x2 = Integer.parseInt(b2Offset[0]);
+        int y1 = Integer.parseInt(b1Offset[1]);
+        int y2 = Integer.parseInt(b2Offset[1]);
+        int z1 = Integer.parseInt(b1Offset[2]);
+        int z2 = Integer.parseInt(b2Offset[2]);
+        int xOffSet = Math.max(x1, x2) - Math.min(x1, x2);
+        if(xOffSet < 0) {
+            xOffSet = xOffSet*-1;
+        }
+        int yOffSet = Math.max(y1, y2) - Math.min(y1, y2);
+        if(yOffSet < 0) {
+            yOffSet = yOffSet*-1;
+        }
+        int zOffSet = Math.max(z1, z2) - Math.min(z1, z2);
+        if(zOffSet < 0) {
+            zOffSet = zOffSet*-1;
+        }
+        return xOffSet+yOffSet+zOffSet;
     }
 }
