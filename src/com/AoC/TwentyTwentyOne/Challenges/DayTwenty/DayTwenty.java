@@ -68,43 +68,22 @@ public class DayTwenty {
             e.printStackTrace();
         }
 
-        Map<Integer, Map<Integer, Integer>> image = new HashMap<>();
-        for(int r = 0; r < initialImage.size(); r++) {
-            image.put(r, initialImage.get(r));
-        }
+        Map<Integer, Map<Integer, Integer>> image = initialImage;
 
 
         ImageEnhancer imageEnhancer = new ImageEnhancer(enhancementAlgorithm, infinitePadding);
-        System.out.println();
-        for(Integer row: image.keySet()) {
-            StringBuilder stringBuilder = new StringBuilder("");
-            for(Integer column: image.get(row).keySet()) {
-                stringBuilder.append((image.get(row).get(column) == 0) ? "." : "#");
-            }
-            System.out.println(stringBuilder.toString());
-        }
-        image = imageEnhancer.enhanceImage(image);
-        System.out.println();
 
-        System.out.println();
-        for(Integer row: image.keySet()) {
-            StringBuilder stringBuilder = new StringBuilder("");
-            for(Integer column: image.get(row).keySet()) {
-                stringBuilder.append((image.get(row).get(column) == 0) ? "." : "#");
-            }
-            System.out.println(stringBuilder.toString());
-        }
-        System.out.println();
+        // Debug
+        // System.out.println();
+        // visualize(image);
         image = imageEnhancer.enhanceImage(image);
-        System.out.println();
-        for(Integer row: image.keySet()) {
-            StringBuilder stringBuilder = new StringBuilder("");
-            for(Integer column: image.get(row).keySet()) {
-                stringBuilder.append((image.get(row).get(column) == 0) ? "." : "#");
-            }
-            System.out.println(stringBuilder.toString());
-        }
-        System.out.println();
+        // Debug
+        // System.out.println();
+        // visualize(image);
+        image = imageEnhancer.enhanceImage(image);
+        // Debug
+        // System.out.println();
+        // visualize(image);
 
         int litPixels = 0;
         for(int row = 0; row < image.size(); row++) {
@@ -114,9 +93,9 @@ public class DayTwenty {
         }
 
         System.out.println();
+        System.out.println();
         System.out.println("-= Day 20: First challenge =-");
         System.out.println("The number of lit pixels after 2 iterations: " + litPixels);
-        System.out.println();
 
         image = initialImage;
 
@@ -136,5 +115,17 @@ public class DayTwenty {
         System.out.println("The number of lit pixels after 50 iterations: " + litPixels);
         System.out.println();
 
+    }
+
+    // Debug method.
+    static void visualize(Map<Integer, Map<Integer, Integer>> image) {
+        System.out.println();
+        for(Integer row: image.keySet()) {
+            StringBuilder stringBuilder = new StringBuilder("");
+            for(Integer column: image.get(row).keySet()) {
+                stringBuilder.append((image.get(row).get(column) == 0) ? "." : "#");
+            }
+            System.out.println(stringBuilder.toString());
+        }
     }
 }
