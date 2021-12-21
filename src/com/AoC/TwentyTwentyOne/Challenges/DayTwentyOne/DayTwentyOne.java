@@ -9,7 +9,7 @@ public class DayTwentyOne {
     public static void dayTwentyOne() {
 
 
-        File file = new File("resources/d21_test_input.txt");
+        File file = new File("resources/d21_input.txt");
         Scanner scanner;
         Integer[] players = new Integer[2];
 
@@ -31,11 +31,11 @@ public class DayTwentyOne {
         System.out.println("An arbitrary number representing the losing score multiplied by the number of dice rolls: " + new DiracDice(players[0], players[1]).playWithDeterministicDice());
 
 
-        new DiracDice(players[0], players[1]).playWithQuantumDice();
+        long winningUniverses = new DiracDice(players[0], players[1]).playWithQuantumDice();
 
         System.out.println();
         System.out.println("-= Day 21: Second challenge =-");
-        System.out.println("Something something: ");
+        System.out.println("The most universy winny guy wins in: " + winningUniverses + " universes");
         System.out.println();
     }
 }

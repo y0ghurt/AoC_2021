@@ -51,6 +51,8 @@ public class Main {
         DayNineteen.dayNineteen();
         */
         DayTwenty.dayTwenty();
+        /* Takes a few seconds to run, and my computer sounds like a vacuum cleaner while running it. Might as well leave it disabled.
         DayTwentyOne.dayTwentyOne();
+        */
     }
 }

@@ -63,66 +63,84 @@ public class DiracDice {
         List<GameState> newGames = new ArrayList<>();
 
         games.add(new GameState(playerOne, playerOneScore, playerTwo, playerTwoScore, 1));
+        /*
+        1           2           3
+        1   2   3   1   2   3   1   2   3
+        123 123 123 123 123 123 123 123 123
+        345 456 567 456 567 678 567 678 789
 
-
+        3 444 555555 6666666 777777 888 9
+        */
+        List<GameState> gSs = null;
         while(1 == 1) {
             boolean isDone = true;
             newGames = new ArrayList<>();
             for (GameState gameState : games) {
-                for(int i = 1; i < 4; i++) {
-                    for (int j = 1; j < 4; j++) {
-                        if (gameState.winner == 0) {
-                            isDone = false;
-                            GameState gS = null;
-                            int playerOnePosition = gameState.playerOnePosition;
-                            playerOneScore = gameState.playerOneScore;
-                            long numberOfGames = gameState.numberOfGames;
-                            playerOnePosition += i;
-                            while (playerOnePosition > 10) {
-                                playerOnePosition += -10;
-                            }
-                            playerOneScore += playerOnePosition;
-                            if (playerOneScore >= 21) {
-                                gS = new GameState(playerOnePosition, playerOneScore, gameState.playerTwoPosition, gameState.playerTwoScore, numberOfGames);
-                                gS.winner = 1;
-                            } else {
+                gSs = new ArrayList<>();
+                if (gameState.winner == 0) {
+                    isDone = false;
 
-                                int playerTwoPosition = gameState.playerTwoPosition;
-                                playerTwoScore = gameState.playerTwoScore;
-                                playerTwoPosition += j;
-                                while (playerTwoPosition > 10) {
-                                    playerTwoPosition += -10;
-                                }
-                                playerTwoScore += playerTwoPosition;
+                    gSs.add(progressPlayerOneGameState(gameState, 3, 1));
+                    gSs.add(progressPlayerOneGameState(gameState, 4, 3));
+                    gSs.add(progressPlayerOneGameState(gameState, 5, 6));
+                    gSs.add(progressPlayerOneGameState(gameState, 6, 7));
+                    gSs.add(progressPlayerOneGameState(gameState, 7, 6));
+                    gSs.add(progressPlayerOneGameState(gameState, 8, 3));
+                    gSs.add(progressPlayerOneGameState(gameState, 9, 1));
 
-
-                                gS = new GameState(playerOnePosition, playerOneScore, playerTwoPosition, playerTwoScore, numberOfGames);
-
-                                if(playerTwoScore >= 21) {
-                                    gS.winner = 2;
-                                }
-
-                            }
-                            if (newGames.contains(gS)) {
-                                newGames.get(newGames.indexOf(gS)).numberOfGames += numberOfGames;
-                            } else {
-                                newGames.add(gS);
-                            }
+                    for (GameState gS : gSs) {
+                        if (newGames.contains(gS)) {
+                            newGames.get(newGames.indexOf(gS)).numberOfGames += gS.numberOfGames;
                         } else {
-                            if (newGames.contains(gameState)) {
-                                newGames.get(newGames.indexOf(gameState)).numberOfGames += gameState.numberOfGames;
-                            } else {
-                                newGames.add(gameState);
-                            }
+                            newGames.add(gS);
                         }
+                    }
+                } else {
+                    if (newGames.contains(gameState)) {
+                        newGames.get(newGames.indexOf(gameState)).numberOfGames += gameState.numberOfGames;
+                    } else {
+                        newGames.add(gameState);
                     }
                 }
             }
             games = newGames;
-            if(isDone) {
+
+            newGames = new ArrayList<>();
+            for (GameState gameState : games) {
+                gSs = new ArrayList<>();
+                if (gameState.winner == 0) {
+                    isDone = false;
+
+                    gSs.add(progressPlayerTwoGameState(gameState, 3, 1));
+                    gSs.add(progressPlayerTwoGameState(gameState, 4, 3));
+                    gSs.add(progressPlayerTwoGameState(gameState, 5, 6));
+                    gSs.add(progressPlayerTwoGameState(gameState, 6, 7));
+                    gSs.add(progressPlayerTwoGameState(gameState, 7, 6));
+                    gSs.add(progressPlayerTwoGameState(gameState, 8, 3));
+                    gSs.add(progressPlayerTwoGameState(gameState, 9, 1));
+
+                    for (GameState gS : gSs) {
+                        if (newGames.contains(gS)) {
+                            newGames.get(newGames.indexOf(gS)).numberOfGames += gS.numberOfGames;
+                        } else {
+                            newGames.add(gS);
+                        }
+                    }
+                } else {
+                    if (newGames.contains(gameState)) {
+                        newGames.get(newGames.indexOf(gameState)).numberOfGames += gameState.numberOfGames;
+                    } else {
+                        newGames.add(gameState);
+                    }
+                }
+            }
+            games = newGames;
+            if (isDone) {
                 break;
             }
         }
+
+
         long playerOneWins = 0;
         long playerTwoWins = 0;
         for(GameState gameState: games) {
@@ -133,9 +151,42 @@ public class DiracDice {
             }
         }
 
-        System.out.println(playerOneWins);
-        System.out.println(playerTwoWins);
-
         return Math.max(playerOneWins, playerTwoWins);
+    }
+
+    private GameState progressPlayerOneGameState(GameState gameState, int steps, int growthFactor) {
+        GameState gS = new GameState(gameState.playerOnePosition, gameState.playerOneScore, gameState.playerTwoPosition, gameState.playerTwoScore, gameState.numberOfGames);
+
+        gS.playerOnePosition += steps;
+        while(gS.playerOnePosition > 10) {
+            gS.playerOnePosition += -10;
+        }
+
+        gS.playerOneScore += gS.playerOnePosition;
+        if(gS.playerOneScore >= 21) {
+            gS.winner = 1;
+        }
+
+        gS.numberOfGames = gS.numberOfGames * growthFactor;
+
+        return gS;
+    }
+
+    private GameState progressPlayerTwoGameState(GameState gameState, int steps, int growthFactor) {
+        GameState gS = new GameState(gameState.playerOnePosition, gameState.playerOneScore, gameState.playerTwoPosition, gameState.playerTwoScore, gameState.numberOfGames);
+
+        gS.playerTwoPosition += steps;
+        while(gS.playerTwoPosition > 10) {
+            gS.playerTwoPosition += -10;
+        }
+
+        gS.playerTwoScore += gS.playerTwoPosition;
+        if(gS.playerTwoScore >= 21) {
+            gS.winner = 2;
+        }
+
+        gS.numberOfGames = gS.numberOfGames * growthFactor;
+
+        return gS;
     }
 }
